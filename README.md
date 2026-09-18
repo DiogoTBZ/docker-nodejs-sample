@@ -1,48 +1,251 @@
-# **Thema:** Erstellen einer ToDo-Applikation mit Markdown, Git, GitHub und Docker
+# Projekt
 
-In dieser Abschlussaufgabe werden alle erlernten Fähigkeiten in den Bereichen **Markdown**, **Git**, **GitHub** und **Docker** kombiniert. Die Aufgabe besteht darin, eine ToDo-Applikation zu erstellen und diese in einem Docker-Container bereitzustellen.
+### Diogo Da Costa
 
-### **Aufgabenstellung:**
+### 18.09.26
 
-1. **GitHub-Fork erstellen:**
-   - Erstelle einen **Fork** des folgenden GitHub-Repositories: [docker-nodejs-sample](https://github.com/ICT-BLJ/docker-nodejs-sample).
-   - Clone deinen Fork lokal auf deinen Computer.
+## Projektbeschreibung
 
-2. **Erstellen einer README-Datei in Markdown:**
-   - Erstelle eine **README.md** Datei im Root-Verzeichnis des Projekts.
-   - Die README soll alle Schritte zur **Installation des Projekts** enthalten. Dazu gehören:
-     - Klonen des Repositories
-     - Installation der notwendigen Pakete
-     - Docker-Konfiguration und -Installation
-     - Starten der Applikation in einem Docker-Container
-   - Nutze [Markdown](https://www.markdownguide.org/cheat-sheet/) für die Struktur und Formatierung der Datei.
+In diesem Projekt wird eine Anwendung erstellt, die lokal auf dem Computer oder mit Docker gestartet werden kann.
 
-3. **Dokumentation der Vorgehensweise:**
-   - Verfasse eine vollständige **Dokumentation in Word**, in der die Arbeitsschritte beschrieben werden. Diese Schritte sind:
-     - Klonen des Repositories
-     - Einrichtung der Entwicklungsumgebung
-     - Erstellung der README.md
-     - Verwendung von Git (Commit, Push)
-     - Erstellung und Nutzung von Docker-Containern
-   - Verwende die während des Office-Kurses erarbeiteten Kenntnisse für das Erstellen dieses Dokuments.
+Für die Verwaltung des Projekts wird **Git** verwendet. Mit **Docker** kann die Anwendung in einem Container ausgeführt werden. Mit **Docker Compose** können die benötigten Container einfacher gestartet und gestoppt werden.
 
-4. **Dockerize das Node.js-Projekt:**
-   - Verfolge die Anleitung unter [docs.docker.com](https://docs.docker.com/guides/language/nodejs/containerize/) ab dem Schritt **"Initialize Docker assets"**.
-   - Dein Ziel ist es, das Projekt in einem Docker-Container lauffähig zu machen, sodass am Ende eine **ToDo-Applikation** in einem Docker-Container bereitsteht.
+Diese README zeigt die wichtigsten Schritte, damit das Projekt auf einem anderen Computer eingerichtet und gestartet werden kann.
 
-5. **Git-Workflows:**
-   - Arbeite mit **Git**, um Änderungen regelmäßig zu committen und auf GitHub zu pushen.
-   - Verwende sinnvolle Commit-Nachrichten, um deinen Fortschritt zu dokumentieren.
-   - Stelle sicher, dass dein finaler Stand auf GitHub vorhanden ist.
+---
 
-6. **Abgabe:**
-   - **Dokumentation:** Lade die erstellte Word-Dokumentation (inkl. Screenshots und Beschreibung der Schritte) in dein Repository hoch.
-   - **GitHub-Link:** Stelle den Link zu deinem GitHub-Repository bereit, das den finalen Stand des Projekts enthält.
+## Voraussetzungen
 
-### **Ziele der Aufgabe:**
-- Anwendung und Vertiefung von Git und GitHub.
-- Verfassen einer strukturierten Anleitung mit Markdown.
-- Containerisieren einer Node.js-Anwendung mit Docker.
-- Dokumentation des gesamten Prozesses in einem Word-Dokument.
-  
-Viel Erfolg bei der Umsetzung!
+Damit das Projekt verwendet werden kann, sollten folgende Programme installiert sein:
+
+- Git
+- Docker Desktop
+- Visual Studio Code
+- Node.js
+- npm
+
+Ob die Programme installiert sind, kann im Terminal überprüft werden:
+
+```bash
+git --version
+docker --version
+docker compose version
+node --version
+npm --version
+```
+
+Wenn bei den Befehlen eine Versionsnummer angezeigt wird, ist das jeweilige Programm installiert.
+
+---
+
+## Repository klonen
+
+Als Erstes muss das Repository auf den eigenen Computer heruntergeladen werden.
+
+Dazu wird folgender Befehl verwendet:
+
+```bash
+git clone <REPOSITORY-URL>
+```
+
+Bei `<REPOSITORY-URL>` muss die URL des eigenen Git-Repositories eingefügt werden.
+
+Beispiel:
+
+```bash
+git clone https://gitlab.com/benutzer/projekt.git
+```
+
+Danach wechselt man in den Projektordner:
+
+```bash
+cd projekt
+```
+
+Nun befindet man sich im richtigen Verzeichnis und kann mit der Installation beginnen.
+
+---
+
+## Pakete installieren
+
+Die Anwendung benötigt verschiedene Pakete und Abhängigkeiten.
+
+Diese können mit folgendem Befehl installiert werden:
+
+```bash
+npm install
+```
+
+npm liest dabei die Datei `package.json` und installiert automatisch die Pakete, die für das Projekt benötigt werden.
+
+Nach der Installation befindet sich normalerweise ein Ordner namens `node_modules` im Projekt.
+
+---
+
+## Anwendung lokal starten
+
+Die Anwendung kann zuerst lokal gestartet werden, um zu prüfen, ob alles funktioniert.
+
+Je nach Projekt wird dafür folgender Befehl verwendet:
+
+```bash
+npm start
+```
+
+Oder im Entwicklungsmodus:
+
+```bash
+npm run dev
+```
+
+Wenn die Anwendung erfolgreich gestartet wurde, kann sie über den Browser geöffnet werden.
+
+Zum Beispiel:
+
+```text
+http://localhost:3000
+```
+
+Der verwendete Port kann je nach Projekt unterschiedlich sein.
+
+---
+
+## Docker-Image erstellen
+
+Damit die Anwendung mit Docker gestartet werden kann, muss zuerst ein Docker-Image erstellt werden.
+
+Dafür wird im Projektordner folgender Befehl ausgeführt:
+
+```bash
+docker build -t meine-app .
+```
+
+Dabei wird das vorhandene `Dockerfile` verwendet.
+
+`meine-app` ist der Name des Docker-Images und kann auch durch einen eigenen Namen ersetzt werden.
+
+Mit folgendem Befehl können die vorhandenen Docker-Images angezeigt werden:
+
+```bash
+docker images
+```
+
+Wenn das Image in der Liste erscheint, wurde es erfolgreich erstellt.
+
+---
+
+## Anwendung mit Docker starten
+
+Nach dem Erstellen des Images kann daraus ein Container gestartet werden.
+
+```bash
+docker run -d -p 3000:3000 --name meine-app-container meine-app
+```
+
+Kurze Erklärung:
+
+- `-d` startet den Container im Hintergrund
+- `-p 3000:3000` verbindet den Port des Computers mit dem Port des Containers
+- `--name` gibt dem Container einen Namen
+- `meine-app` ist das zuvor erstellte Docker-Image
+
+Mit folgendem Befehl kann geprüft werden, ob der Container läuft:
+
+```bash
+docker ps
+```
+
+Wenn der Container dort angezeigt wird, wurde er erfolgreich gestartet.
+
+---
+
+## Anwendung mit Docker Compose starten
+
+Wenn im Projekt eine Datei wie `compose.yml` oder `docker-compose.yml` vorhanden ist, kann die Anwendung auch mit Docker Compose gestartet werden.
+
+```bash
+docker compose up -d
+```
+
+Docker Compose liest die Konfiguration aus der Compose-Datei und startet die dort definierten Container.
+
+Mit folgendem Befehl kann der Status überprüft werden:
+
+```bash
+docker compose ps
+```
+
+Falls Fehler auftreten, können die Logs angezeigt werden:
+
+```bash
+docker compose logs
+```
+
+Damit sieht man die Ausgaben der Container und kann mögliche Probleme einfacher finden.
+
+---
+
+## Anwendung stoppen
+
+### Docker-Container stoppen
+
+Wenn die Anwendung direkt mit Docker gestartet wurde, kann der Container so gestoppt werden:
+
+```bash
+docker stop meine-app-container
+```
+
+Wenn der Container nicht mehr benötigt wird, kann er danach entfernt werden:
+
+```bash
+docker rm meine-app-container
+```
+
+---
+
+### Docker Compose stoppen
+
+Wenn die Anwendung mit Docker Compose gestartet wurde, kann sie mit folgendem Befehl gestoppt werden:
+
+```bash
+docker compose down
+```
+
+Damit werden die gestarteten Container gestoppt und entfernt.
+
+---
+
+## Wichtige Befehle
+
+Hier sind die wichtigsten Befehle nochmals kurz zusammengefasst:
+
+```bash
+# Repository klonen
+git clone <REPOSITORY-URL>
+
+# In den Projektordner wechseln
+cd projekt
+
+# Pakete installieren
+npm install
+
+# Anwendung lokal starten
+npm start
+
+# Docker-Image erstellen
+docker build -t meine-app .
+
+# Docker-Container starten
+docker run -d -p 3000:3000 --name meine-app-container meine-app
+
+# Docker Compose starten
+docker compose up -d
+
+# Docker Compose stoppen
+docker compose down
+```
+
+---
+
+**Name:** Vorname Nachname  
+**Projekt:** Docker-Projekt
