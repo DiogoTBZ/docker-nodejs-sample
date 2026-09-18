@@ -8,7 +8,7 @@
 
 In diesem Projekt wird eine Anwendung erstellt, die lokal auf dem Computer oder mit Docker gestartet werden kann.
 
-Für die Verwaltung des Projekts wird **Git** verwendet. Mit **Docker** kann die Anwendung in einem Container ausgeführt werden. Mit **Docker Compose** können die benötigten Container einfacher gestartet und gestoppt werden.
+Für die Verwaltung des Projekts wird Git verwendet. Mit Docker kann die Anwendung in einem Container ausgeführt werden. Mit Docker Compose können die benötigten Container einfacher gestartet und gestoppt werden.
 
 Diese README zeigt die wichtigsten Schritte, damit das Projekt auf einem anderen Computer eingerichtet und gestartet werden kann.
 
@@ -247,5 +247,5 @@ docker compose down
 
 ---
 
-**Name:** Vorname Nachname  
+**Name:** Diogo Da Costa
 **Projekt:** Docker-Projekt
